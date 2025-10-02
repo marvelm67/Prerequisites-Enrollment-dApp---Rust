@@ -75,7 +75,7 @@ mod tests {
         println!("PDA address: {}", prereq_pda);
         println!("PDA bump: {}", bump);
         
-        // Check if PDA exists
+        // Check PDA
         match rpc_client.get_account(&prereq_pda) {
             Ok(account) => {
                 println!("✅ PDA account exists!");
@@ -152,7 +152,7 @@ mod tests {
             recent_blockhash,
         );
         
-        // Send transaction
+        // Send transaction alert!
         match rpc_client.send_and_confirm_transaction(&transaction) {
             Ok(signature) => {
                 println!("Success! Turbin3 prerequisite submitted:");

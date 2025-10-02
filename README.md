@@ -1,10 +1,10 @@
 # Turbin3 Prerequisites - Rust
 
-Implementasi Rust untuk menyelesaikan prerequisites Turbin3. Project ini cover semua yang dibutuhkan mulai dari generate wallet sampai submit ke program Turbin3 pake raw instructions.
+Rust implementation to complete Turbine3 rust prerequisites. This project covers everything needed starting from generating wallet to submitting to the Turbine3 program using raw instructions.
 
 ## What's Inside
 
-- `keygen.rs` - Generate keypair baru
+- `keygen.rs` - Generate new keypair
 - `converter.rs` - Convert format wallet (Solana ↔ Phantom Base58)
 - `airdrop.rs` - Claim SOL devnet
 - `transfer.rs` - Transfer SOL antar wallet
@@ -13,7 +13,7 @@ Implementasi Rust untuk menyelesaikan prerequisites Turbin3. Project ini cover s
 ## Status
 
 ✅ TypeScript prerequisites done  
-✅ Rust submission berhasil  
+✅ Rust submission success  
 ✅ TX: `XafLT1YPMoNYVFzAK7heSwR8in6b8w5t4qz3f79FHMVB3n5Z8ZE5u4fWC4GQzMFNPqsHxqbrHVzjN6DtKuZ1UpJ`
 
 ## Quick Start
@@ -28,7 +28,7 @@ cargo test claim_airdrop -- --show-output
 # Transfer SOL
 cargo test transfer_sol -- --show-output
 
-# Submit ke Turbin3 (butuh TypeScript prerequisites dulu)
+# Submit ke Turbin3 (Need IDL TS prerequisites)
 cargo test submit_rs -- --ignored --nocapture
 ```
 
@@ -46,18 +46,19 @@ bs58 = "0.5.1"
 
 Program ID: `TRBZyQHB3m68FGeVsqTK39Wm4xejadjVhP5MAZaKWDM`  
 Collection: `5ebsp5RChCGK7ssRZMVMufgVZhd2kFbNaotcZ5UvytN2`  
+User Address: `8wsEeU5EgQ3Thjyvt3odCCPTdf3j8hgyvPvZ1BrLUZTv`  
 Network: Devnet
 
 ### submit_rs Flow
 
-1. Load wallet yang sama dengan TypeScript prerequisites
-2. Derive PDA dengan seeds `["prereqs", user_pubkey]`
+1. Use the same wallet with TypeScript prerequisites
+2. Derive PDA with seeds `["prereqs", user_pubkey]`
 3. Build instruction dengan discriminator `[77, 124, 82, 163, 21, 133, 181, 206]`
 4. Submit transaction
 
 ## Notes
 
-- Harus pake wallet yang sama untuk TypeScript dan Rust steps
+- Use the same wallet as TypeScript dan Rust steps
 - TypeScript prerequisites wajib diselesaikan dulu (buat initialize PDA)
 - Path wallet: `../../turbin-quest/Turbin3-wallet.json`
 
@@ -146,14 +147,7 @@ This project demonstrates:
 - [Solana Documentation](https://docs.solana.com/)
 - [Turbin3 Program](https://explorer.solana.com/address/TRBZyQHB3m68FGeVsqTK39Wm4xejadjVhP5MAZaKWDM?cluster=devnet)
 - [Solana Rust SDK](https://docs.rs/solana-sdk/)
-
-## 🤝 Contributing
-
-This is a learning project for Turbin3 prerequisites. Feel free to fork and experiment with the code for educational purposes.
-
-## 📄 License
-
-This project is for educational purposes as part of the Turbin3 prerequisites program.
+-
 
 ## ⚠️ Important Notes
 
@@ -164,28 +158,12 @@ This project is for educational purposes as part of the Turbin3 prerequisites pr
 - Rust submission requires the initialized PDA to exist
 - Path used: `../../turbin-quest/Turbin3-wallet.json`
 
-### Common Issues
-
-**AccountNotInitialized Error**
-
-```
-Error Code: AccountNotInitialized. Error Number: 3012
-```
-
-**Solution**: Complete TypeScript prerequisites first to initialize PDA
-
-**Wrong PDA Derivation**
-
-- Ensure seeds are correct: `["prereqs", user_pubkey]`
-- Authority PDA uses: `["collection", collection_pubkey]`
-- Use same wallet address for derivation
-
 ### Transaction Explorer
 
 All transactions can be viewed on Solana Explorer:
 
 - **Network**: Devnet
-- **Base URL**: `https://explorer.solana.com/tx/{signature}?cluster=devnet`
+- **Base URL**: `https://explorer.solana.com/tx/XafLT1YPMoNYVFzAK7heSwR8in6b8w5t4qz3f79FHMVB3n5Z8ZE5u4fWC4GQzMFNPqsHxqbrHVzjN6DtKuZ1UpJ?cluster=devnet`
 
 ### Success Verification
 
@@ -195,15 +173,9 @@ Upon successful submission, you'll receive:
 - ✅ NFT mint address
 - ✅ Explorer link for verification
 
-## 🎊 Congratulations!
-
-You have successfully completed the Turbin3 Solana Prerequisites in Rust!
-
-This demonstrates mastery of:
+This task is to test the mastery of:
 
 - Solana program interactions using raw instructions
 - PDA derivation and account management
 - Multi-language blockchain development workflow
 - Transaction construction and error handling
-
-Ready for the next phase of your Turbin3 Builder's journey! 🚀
